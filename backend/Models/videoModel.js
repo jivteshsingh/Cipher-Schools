@@ -12,9 +12,6 @@ const videoSchema = mongoose.Schema({
     description: {
         type: String
     },
-    privacy: {
-        type: Number
-    },
     filePath : {
         type: String
     },
@@ -25,6 +22,9 @@ const videoSchema = mongoose.Schema({
     duration: {
         type: String
     },
+    thumbnail: {
+        type: String
+    }
 }, {timestamps: true})
 
 

@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const multer = require('multer');
 const { Video } = require("../Models/videoModel");
+var ffmpeg = require('fluent-ffmpeg');
 
 
 var storage = multer.diskStorage({
@@ -27,6 +28,7 @@ var upload = multer({ storage: storage }).single("file");
 const uploadFiles = asyncHandler((req,res) => {
     upload(req, res, err => {
         if (err) {
+            console.log(err);
             return res.json({ success: false, err })
         }
         return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
@@ -61,5 +63,42 @@ const fetchVideo = asyncHandler((req,res) => {
     })
 });
 
-module.exports = { uploadFiles, uploadVideo, fetchVideos, fetchVideo }
+const uploadThumbnail = asyncHandler((req, res) => {
+
+    let thumbsFilePath = "";
+    let fileDuration = "";
+
+    ffmpeg.setFfprobePath("c:\\PATH_Programs\\ffprobe.exe");
+    ffmpeg.setFfmpegPath("c:\\PATH_Programs\\ffmpeg.exe");
+
+    ffmpeg.ffprobe(req.body.filePath, function(err, metadata) {
+
+        console.log(req.body.filePath);
+
+
+        console.dir(metadata);
+        console.log(metadata.format.duration);
+
+        fileDuration = metadata.format.duration;
+    });
+
+    ffmpeg(req.body.filePath)
+        .on("filenames", function(filenames) {
+            console.log("Will generate " + filenames.join(", "))
+            thumbsFilePath = "uploads/thumbnails/" + filenames[0];
+        })
+        .on('end', function () {
+            console.log("Screenshots taken")
+            return res.json({success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
+        })
+        .screenshots({
+            count: 1,
+            folder: 'uploads/thumbnails',
+            size:"320x240",
+            filename: "thumbnail-%b.png"
+        });
+});
+
+
+module.exports = { uploadFiles, uploadVideo, fetchVideos, fetchVideo, uploadThumbnail }
 
