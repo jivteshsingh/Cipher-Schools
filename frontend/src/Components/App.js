@@ -16,9 +16,9 @@ function App() {
       <div className='App'>
       <Route path="/" component={LoginPage} exact />
       <Route path="/signup" component={SignupPage} exact />
-      <Route path="/video/upload" component={UploadVideoPage} exact />
+      <Route path="/upload/video" component={UploadVideoPage} exact />
       <Route path="/homepage" component={Homepage} exact />
-      <Route path="/video/:videoId" component={DetailVideoPage} />
+      <Route path="/video/:videoId" component={DetailVideoPage} exact/>
       </div>
       </BrowserRouter>
       </ChakraProvider>

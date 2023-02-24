@@ -31,7 +31,7 @@ function LoginPage() {
       try {
         const config = {headers:{"Content-type": "application/json",},};
         const { data } = await axios.post("http://localhost:4000/api/user/login",{email,password},config);
-        history.push("/upload");
+        history.push("/homepage");
         console.log(JSON.stringify(data));
         toast({ title: "Login is Successful", status: "success", duration: 5000, isClosable: true, position: "bottom", });
 

@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { AddIcon } from '@chakra-ui/icons';
 import { Container, Box, Text, VStack, HStack, Image, FormControl, FormLabel, Input, InputGroup, InputRightElement, Button, Link, useToast } from '@chakra-ui/react'
+import Navbar from './Navbar';
 
 function UploadVideoPage() {
     const [title, setTitle] = useState("");
@@ -93,6 +94,7 @@ function UploadVideoPage() {
     <Container maxW='5xl' d="flex">
     <Box w="100%" d="flex" flex-direction="column" flex={0.50}>
     <Box d="block">
+    <Navbar />
      <Text ml="60px" mb="15px" fontSize="3xl">Upload Video</Text>
        <VStack spacing="5px">
 

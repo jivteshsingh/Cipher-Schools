@@ -19,8 +19,6 @@ function LikeDislike (props) {
 
     if(props.video) {
         variable = {videoId: props.videoId, userId: props.userId}
-    } else {
-        variable = {commentId: props.commentId, userId: props.userId}
     }
 
     useEffect(() => {

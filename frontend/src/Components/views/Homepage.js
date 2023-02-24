@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Container, Box, Text,SimpleGrid, Image, FormControl, FormLabel, Input, InputGroup, InputRightElement, Button, Link, useToast, Flex } from '@chakra-ui/react'
+import Navbar from './Navbar';
 
 
 function Homepage() {
@@ -57,6 +58,7 @@ function Homepage() {
     <Container maxW='5xl' d="flex">
     <Box w="100%" d="flex" flex-direction="column" flex={1.0}>
     <Box d="block">
+    <Navbar />
     <SimpleGrid columns={3} spacing={10}>
     {renderCards}
 </SimpleGrid>

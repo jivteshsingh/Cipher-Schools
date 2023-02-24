@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Box, Text, Select, VStack, FormControl, FormLabel, Input, InputGroup, InputRightElement, Button, Link, useToast } from '@chakra-ui/react'
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 function SignupPage() {
    const [show, setShow] = useState(false)
@@ -21,6 +22,8 @@ function SignupPage() {
       const toast = useToast();
       const [isCreator,setIsCreator] = useState(false);
       const { user, setUser } = useState();
+      const history = useHistory();
+
 
       const roleHandler = (e) => {
         if(e.target.value === "option1"){
@@ -47,6 +50,7 @@ function SignupPage() {
              try {
                const config = {headers:{"Content-type": "application/json",},};
                const { data } = await axios.post("http://localhost:4000/api/user",{name,email,password,isCreator},config);
+               history.push("/homepage");
                toast({ title: "Registration is Successful", status: "success", duration: 5000, isClosable: true, position: "bottom", });
     
               localStorage.setItem("userInfo",JSON.stringify(data));
