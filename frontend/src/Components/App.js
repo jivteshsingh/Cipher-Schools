@@ -5,9 +5,10 @@ import SignupPage from "./views/SignupPage"
 import { BrowserRouter, Route } from 'react-router-dom';
 import "./App.css";
 import UploadVideoPage from './views/UploadVideoPage.js';
+import Homepage from './views/Homepage.js';
+import DetailVideoPage from './views/DetailVideoPage.js';
 
 function App() {
-  const [user,setUser] = useState();
   return (
 
     <ChakraProvider>
@@ -15,8 +16,9 @@ function App() {
       <div className='App'>
       <Route path="/" component={LoginPage} exact />
       <Route path="/signup" component={SignupPage} exact />
-      <Route path="/upload" component={UploadVideoPage} exact />
-      
+      <Route path="/video/upload" component={UploadVideoPage} exact />
+      <Route path="/homepage" component={Homepage} exact />
+      <Route path="/video/:videoId" component={DetailVideoPage} />
       </div>
       </BrowserRouter>
       </ChakraProvider>
