@@ -71,7 +71,7 @@ function SignupPage() {
       return(
         <Container maxW='5xl' centerContent>
         <Box d='block' p={3} bg={"white"} w="100%" mt="65px" borderRadius="lg" borderWidth="1px">
-        <Text fontSize='2xl' fontFamily='Work sans' m="15px 20px">UIET TALKS</Text>
+        <Text fontSize='2xl' fontFamily='Work sans' m="15px 20px">VIDEO PLAYER</Text>
         <Container maxW='5xl' d="flex">
         <Box w="100%" d="flex" flex-direction="column" flex={0.50}>
         <Box d="block">
