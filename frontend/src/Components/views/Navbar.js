@@ -11,7 +11,7 @@ function Navbar () {
             localStorage.removeItem("userInfo");
             history.push("/");
           }
-
+          const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     return(
         <div style={{marginBottom:"5px"}}>
@@ -20,11 +20,13 @@ function Navbar () {
             <Link href="/homepage">VIDEO PLAYER</Link>
             </Text>
             <Spacer />
-            <Text >
+            {userInfo.isCreator && (
+                <Text >
                 <Link href="/upload/video">
                 Upload
                 </Link>
             </Text>
+            )} 
             <Text >
                 <Link onClick={logoutHandler}>Logout</Link>
                 </Text>

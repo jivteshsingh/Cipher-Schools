@@ -10,6 +10,7 @@ function Homepage() {
 
     useEffect(() => {
         axios.get('http://localhost:4000/api/video/fetch/videos').then(response => {
+            console.log(response);
             if(response.data.success) {
                 setVideos(response.data.videos);
             } else {
